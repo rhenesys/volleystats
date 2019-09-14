@@ -1,9 +1,92 @@
 <!DOCTYPE hmtl>
 <html lang="en">
-    <head>
-        <title>VolelyballStats</title>
-    </head>
-    <body>
-        <h1>Volelyball Stats</h1>
-    </body>
+
+<head>
+    <title>Volley Stats</title>
+    <link rel="stylesheet" type="text/css" href='mystyle.css'>
+</head>
+<body>
+    <h1>Volley Stats</h1>
+    <div>
+        <button id="myteambutton" class="btnClass" onclick="displayDiv(this.id)">MY TEAM</button>
+        <button id="scoreboardbutton" class="btnClass" onclick="displayDiv(this.id)">SCOREBOARD</button>
+        <button id="courtbutton" class="btnClass" onclick="displayDiv(this.id)">COURT</button>
+    </div>
+    <div id="anzeigendiv">
+        <div id="myteamdiv" style="margin-top:20px;"></div>
+        <div id="scoreboarddiv" style="display:none;margin-top:20px;"></div>
+        <div id="courtdiv" style="display:none;margin-top:20px;"></div>
+    </div>
+</body>
+<script src="./players.js"></script>
+<script>
+    let playersNumber = 1;
+    const maxPlayers = 14;
+    let countPlayers = 0;
+
+    function displayDiv(btnId) {
+        switch (btnId) {
+            case "myteambutton":
+                document.getElementById("myteamdiv").style.display = "block";
+                document.getElementById("scoreboarddiv").style.display = "none";
+                document.getElementById("courtdiv").style.display = "none";
+                buildMyTeam();
+                break;
+            case "scoreboardbutton":
+                document.getElementById("myteamdiv").style.display = "none";
+                document.getElementById("scoreboarddiv").style.display = "block";
+                document.getElementById("courtdiv").style.display = "none";
+                break;
+            case "courtbutton":
+                document.getElementById("myteamdiv").style.display = "none";
+                document.getElementById("scoreboarddiv").style.display = "none";
+                document.getElementById("courtdiv").style.display = "block";
+                buildCourt();
+                break;
+        }
+    }
+
+    function buildCourt(){
+        document.getElementById("courtdiv").innerHTML = 
+        "<svg width='100%' height='100%'>" +
+            "<rect width='400px' height='600px' style='fill:#2288fc;stroke:#000000' />" +
+            "<line x1='0' y1= '200' x2='400' y2='200' stroke='black' />" +
+            "<line x1='0' y1= '300' x2='400' y2='300' stroke='black' />" +
+            "<line x1='0' y1= '400' x2='400' y2='400' stroke='black' />" +
+            "</svg>";
+    }
+
+    function buildMyTeam(){
+        document.getElementById("myteamdiv").innerHTML = 
+       "<button class='btnClass' style='margin-right: 5px;' onclick='addPlayer()'>Add Player</button><button class='btnClass' id='savePlayers'>Save</button>";
+    }
+
+    function addPlayer(){
+        if(countPlayers < maxPlayers){
+            var playerElement = document.createElement("div");
+            playerElement.id = "playerdiv" + playersNumber;
+            playerElement.className = "player";
+            playerElement.style = "margin-top:10px;margin-bottom:10px";
+            playerElement.innerHTML = 
+                "<input type='text' class='playerName' placeholder='player' /><input type='text' placeholder='number' /><button class='btnRemove' onclick='removePlayer(this)'>-</button>"
+            document.getElementById("myteamdiv").appendChild(playerElement);
+            playersNumber += 1;
+            countPlayers += 1;
+        }else{
+            alert('No more players allowed.');
+        }
+    }
+
+    function removePlayer(btnRemovePlayer){
+        document.getElementById("myteamdiv").removeChild(btnRemovePlayer.parentNode);
+        countPlayers -= 1;
+    }   
+
+    function loadPlayers(){
+
+    }
+
+
+</script>
+
 </html>
