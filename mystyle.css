@@ -1,9 +1,24 @@
 .btnClass{
     background-color: #aaee00;
     width: 110px;
-    height: 50px;
+    height: 110px;
 }
 
 .btnRemove{
     background-color: #aaee00;
 }
+
+.fadeIn{
+    animation: fadeInAnimation ease 3s; 
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+    } 
+} 
