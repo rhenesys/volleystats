@@ -4,7 +4,7 @@
   "description": "Volleyball Stats",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rhenesys/volleystats/issues"
   },
-  "homepage": "https://github.com/rhenesys/volleystats#readme"
+  "homepage": "https://github.com/rhenesys/volleystats#readme",
+  "dependencies": {
+    "electron": "^6.0.9"
+  }
 }
