@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/rhenesys/volleystats#readme",
   "dependencies": {
-    "electron": "6.0.9",
+    "electron": "18.3.7",
     "file-system": "2.2.2"
   }
 }
